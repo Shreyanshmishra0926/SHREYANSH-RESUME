@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shreyansh Mishra - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/special-gothic" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #2C3E50;    /* Deep navy for professionalism */
+        --secondary-color: #34495E;  /* Slightly lighter navy */
+        --accent-color: #E74C3C;     /* Vibrant red for highlights */
+        --card-bg: #ECF0F1;         /* Light gray for cards */
+        --text-color: #2C3E50;      /* Dark text for readability */
+        --light-text: #FFFFFF;       /* White for contrast */
+        --background-light: #F9F9F9; /* Very light background */
+        --border-color: #BDC3C7;     /* Soft gray for borders */
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-light);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+                                
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .header {
+        background-color: var(--primary-color);
+        padding: 30px 40px 50px;
+        position: relative;
+        border-bottom: 3px solid var(--accent-color);
+      }
+
+      .profile-image-container {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 40px;
+        top: 50px;
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 20%;
+        object-fit: cover;
+        border: 3px solid var(--light-text); 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      }
+
+      .header-content {
+        margin-left: 200px;
+        padding-top: 20px;
+      }
+
+      .name {
+        font-family: 'Special Gothic Expanded One', sans-serif;
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: var(--light-text);
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+        margin-top: 15px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--light-text);
+        font-weight: 600;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+        background-color: rgba(255,255,255,0.1);
+      }
+
+      .content-block {
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        background: var(--card-bg);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      
+      .content-block:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-color: var(--accent-color);
+      }
+      
+      .content {
+        padding: 70px 40px 40px;
+        background-color: var(--background-light);
+        position: relative;
+      }
+      
+      section {
+        margin-bottom: 60px;
+      }
+
+      h2, h3 {
+        font-family: 'Special Gothic Expanded One', sans-serif;
+        font-weight: bold;
+        color: var(--primary-color);
+        letter-spacing: 1px;
+      }
+
+      h2 {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-color);
+        transition: width 0.3s ease;
+      }
+
+      h2:hover::after {
+        width: 100px;
+      }
+
+      h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: var(--secondary-color);
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .skill-category {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .skill-item {
+        margin-bottom: 20px;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      .skill-bar {
+        height: 10px;
+        background-color: var(--border-color);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background-color: var(--accent-color);
+        border-radius: 5px;
+        width: 0;
+        transition: width 1s ease-in-out;
+      }
+
+      .skill-item:hover .skill-progress {
+        width: var(--skill-level);
+      }
+
+      .footer {
+        background-color: var(--primary-color);
+        padding: 40px;
+        text-align: center;
+        color: var(--light-text);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin-bottom: 20px;
+      }
+
+      .footer-links a {
+        font-size: 1.5em;
+        color: var(--light-text);
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+        transform: scale(1.3);
+      }
+
+      .copyright {
+        color: var(--border-color);
+        font-size: 0.9em;
+      }
+
+      ul {
+        padding-left: 20px;
+        color: var(--text-color);
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          padding: 20px 20px 60px;
+        }
+
+        .profile-image-container {
+          width: 100px;
+          height: 100px;
+          left: 20px;
+          top: 30px;
+        }
+
+        .header-content {
+          margin-left: 130px;
+          padding-top: 10px;
+        }
+
+        .name {
+          font-size: 1.8em;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .content {
+          padding: 50px 20px 20px;
+        }
+
+        .content-block {
+          padding: 15px;
+        }
+      }
+    </style>
+</head>
+<body>
+<div class="container">
+<header class="header">
+    <div class="profile-image-container">
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQFZdlIttUr5tw/profile-displayphoto-shrink_800_800/B56ZXw5iUSGQAg-/0/1743503370520?e=1750896000&v=beta&t=dWZUpJjgSp_256DEyu66KiQBe86ygg3P4vNMAZkYbjM" alt="Shreyansh Mishra" class="profile-image">
+    </div>
+    <div class="header-content">
+    <div class="name">Shreyansh Mishra</div>
+    <nav class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#volunteering">Volunteering</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<main class="content">
+<!-- About Section -->
+<section id="about">
+<h2>ABOUT</h2>
+<div class="content-block">
+    <div class="intro">
+        Strategic thinker with a proven ability to solve complex problems and drive AI-powered business transformation. 
+        My analytical mind is a masterful problem solver and inspires confidence in those who work with me. 
+        I can bring innovation and growth to your organization.
+    </div>
+</div>
+</section>
+
+<!-- Education Section -->
+<section id="education">
+<h2>EDUCATION</h2>
+<div class="content-block">
+    <ul>
+        <li>
+            <span class="school">IIM Bangalore</span> - 
+            <span class="degree">Bachelor in Business Administration (Digital Business and Entrepreneurship)</span>
+            <br>College ID: shreyanshm24@limb.ac.in | COPA: 7:1 | 2024-2027
+        </li>
+    </ul>
+</div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience">
+<h2>RELEVANT EXPERIENCE</h2>
+<div class="content-block">
+    <ul>
+        <li>
+            <span class="job-title">Social Media Intern</span> - 
+            <span class="organization">Waste to Wonder</span>
+            <ul>
+                <li>Amplified the NGO's social media reach by 327.6% through data-driven content strategies</li>
+                <li>Crafted compelling visuals and copy, aligning with the organization's brand identity</li>
+                <li>Analyzed performance metrics to refine content strategy and maximize engagement</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</section>
+
+<!-- Volunteering Section -->
+<section id="volunteering">
+<h2>VOLUNTEERING</h2>
+<div class="content-block">
+    <ul>
+        <li>
+            <span class="job-title">Learning Pod Leader</span> - 
+            <span class="organization">IIM Bangalore</span>
+            <ul>
+                <li>Led the Learning Pod, guiding counsellors in setting and achieving academic goals</li>
+                <li>Developed strategic plans to enhance academic performance and collaboration</li>
+                <li>Provided focused mentorship to drive goal-oriented progress and team cohesion</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+<h2>PROJECTS</h2>
+<div class="content-block">
+    <h3 class="job-title">T-Shirt Printing Venture</h3>
+    <ul>
+        <li>Launched a t-shirt printing business with just 250 Rs initial investment</li>
+        <li>Successfully generated profits through strategic marketing and operations</li>
+    </ul>
+</div>
+<div class="content-block">
+    <h3 class="job-title">AI-Powered Startup Website</h3>
+    <ul>
+        <li>Created a fully functional website for a new startup using AI tools</li>
+        <li>Implemented modern design and user experience principles</li>
+    </ul>
+</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+<h2>SKILLS</h2>
+<div class="content-block">
+    <div class="skills-container">
+        <div class="skill-category">
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Strategic Planning</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Data Analysis</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>AI Implementation</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 80%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skill-category">
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Excel</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Google Analytics</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>PowerPoint</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--skill-level: 90%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Publications Section -->
+<section id="publications">
+<h2>PUBLICATIONS</h2>
+<div class="content-block">
+    <h3 class="job-title">'AI and its Impact on Marketing'</h3>
+    <ul>
+        <li>Published in House of Marketers December 2024</li>
+        <li>Explored the transformative role of AI in modern marketing strategies</li>
+        <li>Provided actionable insights on automation, customer personalization, and market forecasting</li>
+    </ul>
+</div>
+</section>
+
+<!-- Additional Section -->
+<section id="additional">
+<h2>ADDITIONAL</h2>
+<div class="content-block">
+    <ul>
+        <li>Spearheaded the growth of the primary zonal page, elevating it to a notable level in views and followers through strategic content and engagement</li>
+        <li>Recognized for insightful contributions in a published marketing article on AI and business impact</li>
+        <li>Recognized for excellence in multiple debate competitions</li>
+        <li>Trainee at National PQ College Alumuri Cell – Collaborated with board members to design programs, facilitate meetings, and organize networking sessions with guest speakers. (Dropped out of the college)</li>
+        <li>Strategically cultivated personal YouTube and Instagram presence, amassing over 800K views through compelling and diverse content</li>
+    </ul>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+<h2>CONTACT</h2>
+<div class="content-block">
+    <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+    <div style="margin-top: 30px;">
+        <a href="mailto:shreyanshm24@limb.ac.in" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">
+            <i class="fas fa-envelope"></i> shreyanshm24@limb.ac.in
+        </a>
+    </div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="footer-links">
+<a href="https://linkedin.com/in/shreyanah-mishra-622a6a26b/"><i class="fab fa-linkedin"></i></a>
+<a href="mailto:shreyanshm24@limb.ac.in"><i class="fas fa-envelope"></i></a>
+</div>
+<div class="copyright">&copy; 2024 Shreyansh Mishra. All Rights Reserved.</div>
+</footer>
+</div>
+
+</body>
+</html>
